@@ -23,8 +23,3 @@ jobs:
           sed 's/dist\/index\.js/index.js/g' package.json > dist/package.json
         env:
           CI: true
-      - name: package
-        uses: actions/upload-artifact@v1
-        with:
-          name: package
-          path: dist
