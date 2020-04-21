@@ -1,24 +1,25 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from 'react';
+import { Link } from 'gatsby-plugin-intl';
 
 import {
   handleLinkClick,
   stripHashedLocation,
-  handleStrippedLinkClick
-} from "../utils";
-import { anchorLinkTypes } from "../types";
+  handleStrippedLinkClick,
+} from '../utils';
+import { anchorLinkTypes } from '../types';
 
 export function AnchorLink({
   to,
   title,
   children,
   className,
-  stripHash = false
+  stripHash = false,
 }) {
+  console.log(to);
   const linkProps = {
     to: stripHash ? stripHashedLocation(to) : to,
-    onClick: e =>
-      stripHash ? handleStrippedLinkClick(to, e) : handleLinkClick(to, e)
+    onClick: (e) =>
+      stripHash ? handleStrippedLinkClick(to, e) : handleLinkClick(to, e),
   };
 
   /**
