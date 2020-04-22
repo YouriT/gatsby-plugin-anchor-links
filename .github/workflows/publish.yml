@@ -1,7 +1,8 @@
 name: Node.js Package
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - master
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -10,11 +11,16 @@ jobs:
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@yourit' # Defaults to the user or organization that owns the workflow file
-      - run: yarn
-      - run: yarn build
-      - run: yarn publish
+          always-auth: true
+          node-version: 12
+          registry-url: https://npm.pkg.github.com
+          scope: '@yourit'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: build and publish
+        run: |
+          yarn build
+          echo @OWNER:registry=https://npm.pkg.github.com/ >> .npmrc
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

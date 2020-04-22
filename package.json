@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-plugin-anchor-links",
+  "name": "@yourit/gatsby-plugin-anchor-links",
   "version": "alpha",
   "main": "dist/index.js",
   "author": "Chase Ohlson <chase@chaseohlson.com>",
