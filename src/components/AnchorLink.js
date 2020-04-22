@@ -15,7 +15,6 @@ export function AnchorLink({
   className,
   stripHash = false,
 }) {
-  console.log(to);
   const linkProps = {
     to: stripHash ? stripHashedLocation(to) : to,
     onClick: (e) =>
