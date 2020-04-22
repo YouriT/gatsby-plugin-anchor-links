@@ -12,15 +12,13 @@ jobs:
         with:
           always-auth: true
           node-version: 12
-          registry-url: https://npm.pkg.github.com
           scope: '@yourit'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: build and publish
         run: |
           yarn
           yarn build
-          echo @OWNER:registry=https://npm.pkg.github.com/ >> .npmrc
           yarn publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
