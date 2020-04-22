@@ -21,6 +21,6 @@ jobs:
           yarn
           yarn build
           echo @OWNER:registry=https://npm.pkg.github.com/ >> .npmrc
-          yarn publish
+          yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
